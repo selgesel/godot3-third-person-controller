@@ -1,0 +1,62 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://player/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://ui/Debugger.tscn" type="PackedScene" id=2]
+
+[sub_resource type="ProceduralSky" id=1]
+
+[sub_resource type="Environment" id=2]
+background_mode = 2
+background_sky = SubResource( 1 )
+
+[sub_resource type="QuadMesh" id=3]
+size = Vector2( 200, 200 )
+
+[sub_resource type="SpatialMaterial" id=4]
+albedo_color = Color( 0, 0.490196, 0.0196078, 1 )
+
+[node name="Main" type="Spatial"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 2 )
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+transform = Transform( 0.819272, 0, -0.573405, 0, 1, 0, 0.573405, 0, 0.819272, 0, 2.70409, 0 )
+shadow_enabled = true
+
+[node name="CSGCombiner" type="CSGCombiner" parent="."]
+use_collision = true
+
+[node name="CSGMesh" type="CSGMesh" parent="CSGCombiner"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0 )
+mesh = SubResource( 3 )
+material = SubResource( 4 )
+
+[node name="CSGBox" type="CSGBox" parent="CSGCombiner"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 1, 0 )
+width = 20.0
+depth = 32.0
+
+[node name="CSGBox2" type="CSGBox" parent="CSGCombiner"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 4, -12 )
+width = 6.0
+height = 4.0
+depth = 6.0
+
+[node name="CSGBox3" type="CSGBox" parent="CSGCombiner"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 4, -7 )
+width = 6.0
+height = 4.0
+depth = 6.0
+
+[node name="CSGPolygon" type="CSGPolygon" parent="CSGCombiner"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 16 )
+polygon = PoolVector2Array( 0, 0, 0, 2, 3, 0 )
+depth = 4.0
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.24706, 0, 4.67049 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Debugger" parent="CanvasLayer" instance=ExtResource( 2 )]
