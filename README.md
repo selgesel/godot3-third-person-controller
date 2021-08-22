@@ -1,9 +1,11 @@
 # Godot Third Person Player Controller
 Yet another third person player controller implementation for Godot.
 
-I keep adding stuff to this repository, and I make sure that the master branch is stable, and contains the latest features.
+I keep adding stuff to this repository, and I make sure that the master branch is stable and up-to-date.
 
 If you're interested in the timeline of features see [CHANGELOG.md](./CHANGELOG.md)
+
+You can also see the [Releases](https://github.com/selgesel/godot-third-person-controller/releases) page for the individual releases.
 
 ![Screenshot](./screenshot.jpg)
 
