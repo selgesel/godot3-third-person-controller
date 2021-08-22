@@ -9,11 +9,14 @@ export(float) var max_terminal_velocity: float = 50
 export(float) var max_slope_angle: float = 50
 export(int) var max_jumps: int = 2
 export(float) var jump_cooldown: float = .2
+export(float) var cam_follow_speed: float = 8
 
 onready var _skin: Spatial = $Skin
+onready var _camera: ControllableCamera = $CamRoot/ControllableCamera
 
 var _move_dir: Vector2 = Vector2.ZERO
 var _is_jumping: bool = false
+var _move_rot: float = 0
 
 var _velocity: Vector3 = Vector3.ZERO
 var _y_velocity: float = 0
@@ -30,6 +33,9 @@ func _process(delta):
 
 func _physics_process(delta):
     var direction = Vector3(_move_dir.x, 0, _move_dir.y)
+
+    _move_rot = lerp(_move_rot, deg2rad(_camera._rot_h), cam_follow_speed * delta)
+    direction = direction.rotated(Vector3.UP, _move_rot)
 
     _velocity = _velocity.linear_interpolate(direction * move_speed, acceleration * delta)
     
@@ -48,7 +54,7 @@ func _physics_process(delta):
         _jump_cooldown_remaining = jump_cooldown
 
     if _move_dir != Vector2.ZERO:
-        _rotation = lerp_angle(_rotation, atan2(-_move_dir.x, -_move_dir.y), turn_speed * delta)
+        _rotation = lerp_angle(_rotation, atan2(-direction.x, -direction.z), turn_speed * delta)
         _skin.rotation.y = _rotation
 
     _velocity.y = _y_velocity
