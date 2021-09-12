@@ -7,7 +7,7 @@ If you're interested in the timeline of features see [CHANGELOG.md](./CHANGELOG.
 
 You can also see the [Releases](https://github.com/selgesel/godot-third-person-controller/releases) page for the individual releases.
 
-![Preview](./preview.webm)
+![Preview](./preview.gif)
 
 ## Desktop Controls
 | Keys | Action Name | Description |
