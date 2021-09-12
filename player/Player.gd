@@ -13,6 +13,7 @@ export(float) var cam_follow_speed: float = 8
 
 onready var _skin: Spatial = $Skin
 onready var _camera: ControllableCamera = $CamRoot/ControllableCamera
+onready var _controls: Controls = $Controls
 
 var _move_dir: Vector2 = Vector2.ZERO
 var _is_jumping: bool = false
@@ -25,11 +26,8 @@ var _jump_count: int = 0
 var _jump_cooldown_remaining: float = 0
 
 func _process(delta):
-    var dx := Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
-    var dy := Input.get_action_strength("move_forward") - Input.get_action_strength("move_backwards")
-    
-    _move_dir = Vector2(dx, -dy).normalized()
-    _is_jumping = Input.is_action_just_pressed("jump")
+    _move_dir = _controls.get_movement_vector()
+    _is_jumping = _controls.is_jumping()
 
 func _physics_process(delta):
     var direction = Vector3(_move_dir.x, 0, _move_dir.y)

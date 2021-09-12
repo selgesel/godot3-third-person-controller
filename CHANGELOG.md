@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.0.3
+- Implemented touch screen controls
+    - Touchscreen mode is automatically enabled on Android and iOS devices
+    - Move thumb stick to move
+    - Screen drag to rotate camera
+    - Press button to jump
+    - Pinch with two fingers to zoom in and out
+
 ## 0.0.2
 - Implemented a controllable camera and replaced the old camera with it
     - Camera is controlled by moving the mouse

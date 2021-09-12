@@ -1,0 +1,66 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://assets/thumb-stick-arrow.png" type="Texture" id=1]
+[ext_resource path="res://assets/thumb-stick-ring.png" type="Texture" id=2]
+[ext_resource path="res://assets/joystick-reticle.png" type="Texture" id=3]
+[ext_resource path="res://ui/VirtualThumbStick.gd" type="Script" id=4]
+
+[node name="VirtualThumbStick" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -966.0
+margin_bottom = -368.0
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Reticle" type="TextureRect" parent="."]
+modulate = Color( 0.6, 0.6, 0.6, 1 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -20.0
+margin_top = -20.0
+margin_right = 20.0
+margin_bottom = 20.0
+texture = ExtResource( 3 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Ring" type="TextureRect" parent="."]
+modulate = Color( 0.6, 0.6, 0.6, 1 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -128.0
+margin_top = -128.0
+margin_right = 128.0
+margin_bottom = 128.0
+rect_pivot_offset = Vector2( 128, 128 )
+texture = ExtResource( 2 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Indicator" type="TextureRect" parent="."]
+modulate = Color( 0, 0.764706, 1, 1 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -128.0
+margin_top = -128.0
+margin_right = 128.0
+margin_bottom = 128.0
+rect_pivot_offset = Vector2( 128, 128 )
+texture = ExtResource( 1 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}

@@ -1,15 +1,15 @@
 # Godot Third Person Player Controller
-Yet another third person player controller implementation for Godot.
+A third person player controller with touchscreen support for Godot.
 
-I keep adding stuff to this repository, and I make sure that the master branch is stable and up-to-date.
+I sometimes update this repository with new features, but the master branch should always be stable and up-to-date.
 
 If you're interested in the timeline of features see [CHANGELOG.md](./CHANGELOG.md)
 
 You can also see the [Releases](https://github.com/selgesel/godot-third-person-controller/releases) page for the individual releases.
 
-![Screenshot](./screenshot.jpg)
+![Preview](./preview.webm)
 
-## Controls
+## Desktop Controls
 | Keys | Action Name | Description |
 |------|-------------|-------------|
 | `W` | `move_forward` | Move character forward |
@@ -20,6 +20,15 @@ You can also see the [Releases](https://github.com/selgesel/godot-third-person-c
 | `Esc` | `ui_cancel` | (Built-in) Toggle between captured and visible mouse modes |
 | `Mouse Wheel Up` | `zoom_in` | Move the camera closer to the player |
 | `Mouse Wheel Down` | `zoom_out` | Move the camera further away from the player |
+
+## Touchscreen Gestures
+| Gesture | Context | Description |
+|---------|---------|-------------|
+| Drag | Thumb Stick (Left) | Move the character around with a speed relative to drag distance |
+| Drag | Screen | Rotate the camera |
+| Press | Button (Right) | Have the character jump |
+| Pinch In (Two Fingers) | Screen | Move the camera closer to the player |
+| Pinch Out (Two Fingers) | Screen | Move the camera closer to the player |
 
 ## License
 MIT
