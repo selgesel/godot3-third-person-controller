@@ -25,7 +25,7 @@ func _process(delta):
 
         var ratio: float = 0 if begin_distance == 0 else current_distance / begin_distance
         if ratio > 0:
-            _zoom_scale_delta = floor(log(ratio) * zoom_step * 100) / 100
+            _zoom_scale_delta = -floor(log(ratio) * zoom_step * 100) / 100
     elif _zoom_scale_delta != 0:
         set_zoom_scale(get_zoom_scale())
 
@@ -52,7 +52,7 @@ func get_camera_rotation():
     return _cam_rot
 
 func get_zoom_scale():
-    return _zoom_scale + _zoom_scale_delta
+    return clamp(_zoom_scale + _zoom_scale_delta, 0, 1)
 
 func set_zoom_scale(zoom_scale):
     _zoom_scale = zoom_scale

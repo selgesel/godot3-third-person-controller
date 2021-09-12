@@ -27,7 +27,7 @@ You can also see the [Releases](https://github.com/selgesel/godot-third-person-c
 | Drag | Thumb Stick (Left) | Move the character around with a speed relative to drag distance |
 | Drag | Screen | Rotate the camera |
 | Press | Button (Right) | Have the character jump |
-| Pinch In (Two Fingers) | Screen | Move the camera closer to the player |
+| Pinch In (Two Fingers) | Screen | Move the camera further away from the player |
 | Pinch Out (Two Fingers) | Screen | Move the camera closer to the player |
 
 ## License
