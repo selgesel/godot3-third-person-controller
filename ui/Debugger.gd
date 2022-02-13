@@ -4,6 +4,8 @@ onready var _label: Label = $Label
 onready var _player: Spatial = get_tree().get_nodes_in_group("player")[0]
 
 func _process(delta):
+    # just dump some information on the screen
+    # this is an optional node that might be useful in some cases, but feel free to just remove it
     var player_pos: Vector3 = _player.global_transform.origin
     _label.text = "Player Position: (%.2f, %.2f, %.2f)\n" % [player_pos.x, player_pos.y, player_pos.z]
     _label.text += "Move Direction: (%.2f, %.2f)\n" % [_player._move_dir.x, _player._move_dir.y]
