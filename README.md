@@ -1,11 +1,11 @@
 # Godot Third Person Player Controller
 A third person player controller with touchscreen support for Godot.
 
-I sometimes update this repository with new features, but the master branch should always be stable and up-to-date.
+This is a complementary code repository for my [YouTube video series](https://www.youtube.com/playlist?list=PLlT0CCZ8Yw0mcxG_D_sSA-Imnc5tiR4tx) and it gets updated with each new video I post.
 
-If you're interested in the timeline of features see [CHANGELOG.md](./CHANGELOG.md)
+This means that the master branch always contains the latest changes, and is in sync with my latest video. If you're interested in a subset of the features or the history of the project in tandem with the corresponding videos, you can view the repo at an older tag (e.g. tag [0.0.1](https://github.com/selgesel/godot-third-person-controller/tree/0.0.1) corresponds to [Video Part 1](https://www.youtube.com/watch?v=PQF2Zd5kKFQ), tag [0.0.2](https://github.com/selgesel/godot-third-person-controller/tree/0.0.2) to [Video Part 2](https://www.youtube.com/watch?v=Q41vo6luWsk) etc.).
 
-You can also see the [Releases](https://github.com/selgesel/godot-third-person-controller/releases) page for the individual releases.
+For a list of changes you might want to see the [CHANGELOG.md](./CHANGELOG.md), and also the [Releases](https://github.com/selgesel/godot-third-person-controller/releases) page for each individual release (e.g. a new tag).
 
 ![Preview](./preview.gif)
 
@@ -32,3 +32,4 @@ You can also see the [Releases](https://github.com/selgesel/godot-third-person-c
 
 ## License
 MIT
+
