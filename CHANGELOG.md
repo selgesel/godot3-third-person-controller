@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.0.4
+- Refactored movement system using state machines
+- Added new movement types
+    - Dashing
+        - Allows player to slingshot themselves in the current movement direction
+        - Key binding: Q
+    - Sprinting
+        - Allows player to run faster
+        - Key binding: Shift
+    - Crouching
+        - Allows player to crouch and move slowly
+        - While crouching the player cannot dash or sprint
+        - Key binding: Ctrl
+
 ## 0.0.3
 - Implemented touch screen controls
     - Touchscreen mode is automatically enabled on Android and iOS devices

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/joystick-reticle.png-ef46b6c646a719e0831c0b453a2f40f0.stex"
+path="res://.import/crouch-icon.png-44778d4d61c7961fad8742c6b73bf0bc.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/joystick-reticle.png"
-dest_files=[ "res://.import/joystick-reticle.png-ef46b6c646a719e0831c0b453a2f40f0.stex" ]
+source_file="res://assets/crouch-icon.png"
+dest_files=[ "res://.import/crouch-icon.png-44778d4d61c7961fad8742c6b73bf0bc.stex" ]
 
 [params]
 

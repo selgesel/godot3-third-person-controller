@@ -13,6 +13,9 @@ var _move_vec: Vector2 = Vector2.ZERO
 var _cam_rot: Vector2 = Vector2.ZERO
 var _zoom_scale: float = 0
 var _is_jumping: bool = false
+var _is_sprinting: bool = false
+var _is_dashing: bool = false
+var _is_crouching: bool = false
 var _is_capturing: bool = false
 var _is_touchscreen: bool = false
 
@@ -53,12 +56,16 @@ func _process(delta):
         _zoom_scale = _mobile_controls.get_zoom_scale()
 
     # in both desktop and touch screen devices the jump flag can be determined via the jump action
+    # same goes for other actions
     _is_jumping = Input.is_action_just_pressed("jump")
+    _is_sprinting = Input.is_action_pressed("sprint")
+    _is_dashing = Input.is_action_pressed("dash")
+    _is_crouching = Input.is_action_pressed("crouch")
 
 func _input(event):
     # on non-touchscreen devices toggle the mouse cursor's capture mode when the ui_cancel action is
     # pressed (e.g. the Esc key)
-    if !_is_touchscreen && Input.is_action_just_pressed("ui_cancel"):
+    if Input.is_action_just_pressed("ui_cancel"):
         _is_capturing = !_is_capturing
 
         if _is_capturing:
@@ -87,6 +94,15 @@ func get_movement_vector():
 
 func is_jumping():
     return _is_jumping
+
+func is_sprinting():
+    return _is_sprinting
+
+func is_dashing():
+    return _is_dashing
+
+func is_crouching():
+    return _is_crouching
 
 func get_camera_rotation():
     return _cam_rot

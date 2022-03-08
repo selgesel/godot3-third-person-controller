@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/joystick-reticle.png-ef46b6c646a719e0831c0b453a2f40f0.stex"
+path="res://.import/dash-icon.png-b98548bbc4f61545b9bcef5879a05bcf.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/joystick-reticle.png"
-dest_files=[ "res://.import/joystick-reticle.png-ef46b6c646a719e0831c0b453a2f40f0.stex" ]
+source_file="res://assets/dash-icon.png"
+dest_files=[ "res://.import/dash-icon.png-b98548bbc4f61545b9bcef5879a05bcf.stex" ]
 
 [params]
 

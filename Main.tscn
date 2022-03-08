@@ -1,7 +1,6 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://player/Player.tscn" type="PackedScene" id=1]
-[ext_resource path="res://ui/Debugger.tscn" type="PackedScene" id=2]
 
 [sub_resource type="ProceduralSky" id=1]
 
@@ -57,7 +56,3 @@ depth = 4.0
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.24706, 0, 4.67049 )
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="Debugger" parent="CanvasLayer" instance=ExtResource( 2 )]

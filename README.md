@@ -16,6 +16,9 @@ For a list of changes you might want to see the [CHANGELOG.md](./CHANGELOG.md), 
 | `S` | `move_backwards` | Move character backwards |
 | `A` | `move_left` | Move character to the left |
 | `D` | `move_right` | Move character to the right |
+| `Q` | `dash` | Have the character dash in their current movement direction (works both on the ground and mid-air) |
+| `Shift` | `sprint` | Have the character run faster |
+| `Ctrl` | `crouch` | Have the character crouch and move more slowly. While crouching the character can't jump or dash. |
 | `Space` | `jump` | Have the character jump |
 | `Esc` | `ui_cancel` | (Built-in) Toggle between captured and visible mouse modes |
 | `Mouse Wheel Up` | `zoom_in` | Move the camera closer to the player |
