@@ -1,5 +1,9 @@
 extends PlayerState
 
+func enter():
+    # set the current animation root state to Crouching
+    player.anim_tree.set("parameters/RootState/current", 2)
+
 func process(delta):
     # if the player is not trying to crouch, transition back to the OnGround state
     if !player.controls.is_crouching():
@@ -10,3 +14,7 @@ func process(delta):
     else:
         # if the player is not moving at all, transition to the Crouching/Stopped state
         state_machine.transition_to("Crouching/Stopped")
+
+func physics_process(delta):
+    # set the crouching blend position to player's horizontal speed divided by 4, the crouched walking speed
+    player.anim_tree.set("parameters/Crouching/blend_position", player.velocity.length() / 4.0)

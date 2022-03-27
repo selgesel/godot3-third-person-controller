@@ -9,6 +9,10 @@ func enter():
     # upon entering the state, set the jumping status to true
     _will_dash = true
 
+    # set the dash vfx particle system to emitting
+    # this is a one-shot particle system so we don't have to worry about stopping it
+    player.vfx_dash.emitting = true
+
 func physics_process(delta):
     # call physics_process method of the the super class (State) which in turn calls the physics_process
     # method of the parent state (the super class is not the same as the parent state)

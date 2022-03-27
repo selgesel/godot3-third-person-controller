@@ -18,6 +18,10 @@ var _jump_cooldown_remaining: float = 0
 
 var _move_rot: float = 0
 
+func enter():
+    # set the current animation root state to Crouching
+    player.anim_tree.set("parameters/RootState/current", 1)
+
 func process(delta):
     # count down the jump and dash cooldown timers
     _dash_cooldown_remaining = max(_dash_cooldown_remaining - delta, 0)
@@ -39,6 +43,9 @@ func process(delta):
         state_machine.transition_to("InAir/Falling")
 
 func physics_process(delta):
+    # set the in air blend position to player's vertical velocity divided by 50, the max. terminal velocity
+    player.anim_tree.set("parameters/InAir/blend_position", player.y_velocity / 50.0)
+
     # if the player is on the floor, reset the jump timer and counter, and transition to the OnGround state
     if player.is_on_floor():
         _jump_count = 0

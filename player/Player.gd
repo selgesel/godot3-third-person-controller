@@ -7,6 +7,8 @@ export(float) var max_slope_angle: float = 50
 onready var skin: Spatial = $Skin
 onready var camera: ControllableCamera = $CamRoot/ControllableCamera
 onready var controls: Controls = $Controls
+onready var anim_tree: AnimationTree = $Skin/AnimationTree
+onready var vfx_dash: Particles = $Skin/VfxDash
 
 var velocity: Vector3 = Vector3.ZERO
 var y_velocity: float = 0

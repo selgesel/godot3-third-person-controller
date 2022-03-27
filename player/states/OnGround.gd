@@ -4,6 +4,10 @@ export(float) var dash_cooldown: float = 1
 
 var _dash_cooldown_remaining: float = 0
 
+func enter():
+    # set the current animation root state to Crouching
+    player.anim_tree.set("parameters/RootState/current", 0)
+
 func process(delta):
     _dash_cooldown_remaining = max(_dash_cooldown_remaining - delta, 0)
 
@@ -24,6 +28,10 @@ func process(delta):
     elif !player.has_movement():
         # if the player has no horizontal movement, transition to the OnGround/Running state
         state_machine.transition_to("OnGround/Stopped")
+
+func physics_process(delta):
+    # set the on ground blend position to player's horizontal speed divided by 10, the running speed
+    player.anim_tree.set("parameters/OnGround/blend_position", player.velocity.length() / 10.0)
 
 func can_dash():
     # if the dash cooldown timer is 0 or less the player can jump
