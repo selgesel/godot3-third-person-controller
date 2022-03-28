@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.0.5
+- Replaced the character "body" with a simple 3D model
+- Added movement animations
+- Added a simple VFX that is played when the player dashes
+- Updated virtual buttons to display another color when tapped
+- Updated the preview in the README to display the new model and virtual button interactions
+
 ## 0.0.4
 - Refactored movement system using state machines
 - Added new movement types
