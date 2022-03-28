@@ -7,7 +7,7 @@ This means that the master branch always contains the latest changes, and is in 
 
 For a list of changes you might want to see the [CHANGELOG.md](./CHANGELOG.md), and also the [Releases](https://github.com/selgesel/godot-third-person-controller/releases) page for each individual release (e.g. a new tag).
 
-![Preview](./preview.gif)
+![Preview](./preview2.gif)
 
 ## Desktop Controls
 | Keys | Action Name | Description |
