@@ -8,6 +8,7 @@ var _will_jump: bool = false
 func enter():
     # upon entering the state, set the jumping status to true
     _will_jump = true
+    parent.accept_jump()
 
 func physics_process(delta):
     # call physics_process method of the the super class (State) which in turn calls the physics_process

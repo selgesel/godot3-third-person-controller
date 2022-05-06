@@ -31,8 +31,6 @@ func process(delta):
     # the current jump count, and reset the jump cooldown timer to the cooldown duration
     if player.controls.is_jumping() && can_jump():
         state_machine.transition_to("InAir/Jumping")
-        _jump_count += 1
-        _jump_cooldown_remaining = jump_cooldown
     elif can_dash() && player.controls.is_dashing():
         # if the player is trying to dash and they CAN dash, transition to the InAir/Dashing state and
         # set the dash cooldown timer to the cooldown duration
@@ -46,10 +44,13 @@ func physics_process(delta):
     # set the in air blend position to player's vertical velocity divided by 50, the max. terminal velocity
     player.anim_tree.set("parameters/InAir/blend_position", player.y_velocity / 50.0)
 
-    # if the player is on the floor, reset the jump timer and counter, and transition to the OnGround state
+    # if the player is on the floor, transition to the OnGround state
     if player.is_on_floor():
-        _jump_count = 0
-        _jump_cooldown_remaining = 0
+        # if currently in the Falling state, also reset jump counters
+        var state_name: String = "%s" % [state_machine._state.get_path()]
+        if state_name.ends_with("Falling"):
+            _jump_count = 0
+            _jump_cooldown_remaining = 0
         state_machine.transition_to("OnGround")
         return
 
@@ -77,3 +78,7 @@ func can_jump():
     # if the player is on the floor, or if the current jump count is less than the max jump count and the jump
     # cooldown timer is 0 or less the player can jump
     return player.is_on_floor() || (_jump_count < max_jumps && _jump_cooldown_remaining <= 0)
+
+func accept_jump():
+    _jump_count += 1
+    _jump_cooldown_remaining = jump_cooldown

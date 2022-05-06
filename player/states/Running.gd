@@ -9,8 +9,6 @@ export(float) var cam_follow_speed: float = 8
 var _move_rot: float = 0
 
 func physics_process(delta):
-    .physics_process(delta)
-
     # call physics_process method of the the super class (State) which in turn calls the physics_process
     # method of the parent state (the super class is not the same as the parent state)
     .physics_process(delta)
