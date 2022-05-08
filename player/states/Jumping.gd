@@ -8,6 +8,8 @@ var _will_jump: bool = false
 func enter():
     # upon entering the state, set the jumping status to true
     _will_jump = true
+
+    # tell the root InAir state to increase jump count and reset jump cooldown
     parent.accept_jump()
 
 func physics_process(delta):

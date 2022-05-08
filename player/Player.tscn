@@ -104,7 +104,8 @@ color_ramp = SubResource( 20 )
 size = Vector3( 0.04, 0.04, 2 )
 
 [sub_resource type="CapsuleShape" id=3]
-radius = 0.5
+radius = 0.3
+height = 1.2
 
 [node name="Player" type="KinematicBody" groups=["player"]]
 script = ExtResource( 1 )
@@ -137,11 +138,11 @@ process_material = SubResource( 17 )
 draw_pass_1 = SubResource( 18 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1, 0 )
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.9, -4.37114e-09 )
 shape = SubResource( 3 )
 
 [node name="CamRoot" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0 )
 
 [node name="ControllableCamera" parent="CamRoot" instance=ExtResource( 2 )]
 

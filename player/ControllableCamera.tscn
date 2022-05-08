@@ -10,5 +10,5 @@ script = ExtResource( 1 )
 [node name="GimbalV" type="Spatial" parent="GimbalH"]
 
 [node name="ClippedCamera" type="ClippedCamera" parent="GimbalH/GimbalV"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4 )
 current = true

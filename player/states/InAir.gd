@@ -27,8 +27,7 @@ func process(delta):
     _dash_cooldown_remaining = max(_dash_cooldown_remaining - delta, 0)
     _jump_cooldown_remaining = max(_jump_cooldown_remaining - delta, 0)
 
-    # if the player is trying to jump and they CAN jump, transition to the InAir/Jumping state, increase
-    # the current jump count, and reset the jump cooldown timer to the cooldown duration
+    # if the player is trying to jump and they CAN jump, transition to the InAir/Jumping state
     if player.controls.is_jumping() && can_jump():
         state_machine.transition_to("InAir/Jumping")
     elif can_dash() && player.controls.is_dashing():
@@ -80,5 +79,6 @@ func can_jump():
     return player.is_on_floor() || (_jump_count < max_jumps && _jump_cooldown_remaining <= 0)
 
 func accept_jump():
+    # increase the jump count and reset the jump cooldown timer
     _jump_count += 1
     _jump_cooldown_remaining = jump_cooldown
