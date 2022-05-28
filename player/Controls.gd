@@ -18,6 +18,9 @@ var _is_dashing: bool = false
 var _is_crouching: bool = false
 var _is_capturing: bool = false
 var _is_touchscreen: bool = false
+var _is_swimming_up: bool = false
+var _is_swimming_down: bool = false
+var _is_surging: bool = false
 
 func _ready():
     # wait until the parent node is ready
@@ -61,6 +64,9 @@ func _process(delta):
     _is_sprinting = Input.is_action_pressed("sprint")
     _is_dashing = Input.is_action_pressed("dash")
     _is_crouching = Input.is_action_pressed("crouch")
+    _is_swimming_up = Input.is_action_pressed("swim_up")
+    _is_swimming_down = Input.is_action_pressed("swim_down")
+    _is_surging = Input.is_action_pressed("surge")
 
 func _input(event):
     # on non-touchscreen devices toggle the mouse cursor's capture mode when the ui_cancel action is
@@ -103,6 +109,15 @@ func is_dashing():
 
 func is_crouching():
     return _is_crouching
+
+func is_swimming_up():
+    return _is_swimming_up
+
+func is_swimming_down():
+    return _is_swimming_down
+
+func is_surging():
+    return _is_surging
 
 func get_camera_rotation():
     return _cam_rot

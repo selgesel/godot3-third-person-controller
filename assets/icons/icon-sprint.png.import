@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/sprint-icon.png-4396670f36c0acff0a2cf5c7b655fc16.stex"
+path="res://.import/icon-sprint.png-54fbf15c8e2bce8dc9a038800ddffee9.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprint-icon.png"
-dest_files=[ "res://.import/sprint-icon.png-4396670f36c0acff0a2cf5c7b655fc16.stex" ]
+source_file="res://assets/icons/icon-sprint.png"
+dest_files=[ "res://.import/icon-sprint.png-54fbf15c8e2bce8dc9a038800ddffee9.stex" ]
 
 [params]
 
@@ -21,8 +21,8 @@ compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
 flags/filter=true
-flags/mipmaps=false
-flags/anisotropic=false
+flags/mipmaps=true
+flags/anisotropic=true
 flags/srgb=2
 process/fix_alpha_border=true
 process/premult_alpha=false

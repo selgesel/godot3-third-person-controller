@@ -11,6 +11,7 @@ onready var _gimbal_h: Spatial = $GimbalH
 onready var _gimbal_v: Spatial = $GimbalH/GimbalV
 onready var _camera: ClippedCamera = $GimbalH/GimbalV/ClippedCamera
 onready var _controls: Controls = get_tree().get_nodes_in_group("controls")[0]
+onready var _underwater_effect: ColorRect = $UnderwaterEffect
 
 var _rot_h: float = 0
 var _rot_v: float = 0
@@ -53,3 +54,11 @@ func _physics_process(delta):
     # lerp the camera's current local Z position towards the distance variable as determined by the
     # controls node's zoom scale value in the _process method
     _camera.transform.origin.z = lerp(_camera.transform.origin.z, _distance, zoom_speed * delta)
+
+func _on_WaterDetector_area_entered(area):
+    # the camera is underwater, show the underwater effect
+    _underwater_effect.visible = true
+
+func _on_WaterDetector_area_exited(area):
+    # the camera is underwater, hide the underwater effect
+    _underwater_effect.visible = false

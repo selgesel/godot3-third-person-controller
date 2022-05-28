@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/jump-icon.png-287efcfab96b0f8f65c91ef610ba0e0f.stex"
+path="res://.import/icon-swim-up.png-615adb9bbf365780c617923fe5373536.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/jump-icon.png"
-dest_files=[ "res://.import/jump-icon.png-287efcfab96b0f8f65c91ef610ba0e0f.stex" ]
+source_file="res://assets/icons/icon-swim-up.png"
+dest_files=[ "res://.import/icon-swim-up.png-615adb9bbf365780c617923fe5373536.stex" ]
 
 [params]
 
@@ -21,8 +21,8 @@ compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
 flags/filter=true
-flags/mipmaps=false
-flags/anisotropic=false
+flags/mipmaps=true
+flags/anisotropic=true
 flags/srgb=2
 process/fix_alpha_border=true
 process/premult_alpha=false

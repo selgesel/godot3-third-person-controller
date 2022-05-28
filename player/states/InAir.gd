@@ -16,8 +16,6 @@ var _dash_cooldown_remaining: float = 0
 var _jump_count: int = 0
 var _jump_cooldown_remaining: float = 0
 
-var _move_rot: float = 0
-
 func enter():
     # set the current animation root state to Crouching
     player.anim_tree.set("parameters/RootState/current", 1)
@@ -53,21 +51,11 @@ func physics_process(delta):
         state_machine.transition_to("OnGround")
         return
 
-    # for air control, get the horizontal movement direction from the controls node and apply the same
-    # logic as the OnGround\Running state
-    var move_dir = player.controls.get_movement_vector()
-    var direction = Vector3(move_dir.x, 0, move_dir.y)
-
-    _move_rot = lerp(_move_rot, deg2rad(player.camera._rot_h), cam_follow_speed * delta)
-    direction = direction.rotated(Vector3.UP, _move_rot)
-
-    player.velocity = player.velocity.linear_interpolate(direction * air_speed, air_acceleration * delta)
+    # set the player's horizontal velocity based on the air speed
+    set_horizontal_movement(air_speed, turn_speed, cam_follow_speed, air_acceleration, delta)
 
     # otherwise decrease the vertical velocity by gravity, clamped to the max terminal velocity we defined earlier
     player.y_velocity = clamp(player.y_velocity - gravity, -max_terminal_velocity, max_terminal_velocity)
-
-    if move_dir != Vector2.ZERO:
-        player.skin.rotation.y = lerp_angle(player.skin.rotation.y, atan2(-direction.x, -direction.z), turn_speed * delta)
 
 func can_dash():
     # if the dash cooldown timer is 0 or less the player can dash

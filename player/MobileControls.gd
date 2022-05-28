@@ -6,11 +6,26 @@ export(float) var zoom_step: float = .5
 
 onready var _move_stick: VirtualThumbStick = $MoveStick
 onready var _parent = get_parent()
+onready var _player = get_tree().get_nodes_in_group("player")[0]
+
+onready var _btn_jump: Control = $Controls/VBoxContainer/CenterContainer/JumpButton
+onready var _btn_sprint: Control = $Controls/VBoxContainer/HBoxContainer/SprintButton
+onready var _btn_dash: Control = $Controls/VBoxContainer/HBoxContainer/DashButton
+onready var _btn_crouch: Control = $Controls/VBoxContainer/CenterContainer2/CrouchButton
+
+onready var _btn_swim_up: Control = $Controls/VBoxContainer/CenterContainer/SwimUpButton
+onready var _btn_placeholder: Control = $Controls/VBoxContainer/HBoxContainer/Placeholder
+onready var _btn_surge: Control = $Controls/VBoxContainer/HBoxContainer/SurgeButton
+onready var _btn_swim_down: Control = $Controls/VBoxContainer/CenterContainer2/SwimDownButton
 
 var _cam_rot: Vector2 = Vector2.ZERO
 var _touches := {}
 var _zoom_scale_delta: float = 0
 var _zoom_scale: float = 0
+
+func _ready():
+    # watch for changes in the player's movement state
+    _player.connect("movement_state_changed", self, "_on_player_movement_state_changed")
 
 func _process(delta):
     # if the node or one of its ancestors is not visible in the scene tree don't do anything
@@ -71,6 +86,21 @@ func _input(event):
             _cam_rot.x -= event.relative.x * _parent.sensitivity
             _cam_rot.y -= event.relative.y * _parent.sensitivity
             _cam_rot.y = clamp(_cam_rot.y, _parent.min_pitch, _parent.max_pitch)
+
+func _on_player_movement_state_changed(new_state: NodePath):
+    # show or hide the default and swimming buttons based on the player's new movement state
+    var state_name := "%s" % [new_state]
+    var is_swimming = state_name.begins_with("Swimming")
+
+    _btn_jump.visible = state_name == "Swimming/OnSurface" || !is_swimming
+    _btn_sprint.visible = !is_swimming
+    _btn_dash.visible = !is_swimming
+    _btn_crouch.visible = !is_swimming
+
+    _btn_swim_up.visible = is_swimming && state_name != "Swimming/OnSurface"
+    _btn_placeholder.visible = is_swimming
+    _btn_surge.visible = is_swimming && state_name == "Swimming/Underwater"
+    _btn_swim_down.visible = is_swimming
 
 func get_movement_vector():
     return _move_stick.get_value()

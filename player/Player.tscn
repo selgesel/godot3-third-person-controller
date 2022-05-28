@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=52 format=2]
 
 [ext_resource path="res://player/Player.gd" type="Script" id=1]
 [ext_resource path="res://player/ControllableCamera.tscn" type="PackedScene" id=2]
@@ -13,6 +13,18 @@
 [ext_resource path="res://player/states/Falling.gd" type="Script" id=11]
 [ext_resource path="res://player/states/Crouching.gd" type="Script" id=12]
 [ext_resource path="res://player/PlayerDoll.tscn" type="PackedScene" id=13]
+[ext_resource path="res://player/states/Swimming.gd" type="Script" id=14]
+[ext_resource path="res://player/states/OnSurface.gd" type="Script" id=15]
+[ext_resource path="res://player/states/Underwater.gd" type="Script" id=16]
+[ext_resource path="res://player/states/Diving.gd" type="Script" id=17]
+[ext_resource path="res://player/states/Surging.gd" type="Script" id=18]
+
+[sub_resource type="SphereShape" id=21]
+radius = 0.5
+
+[sub_resource type="CylinderShape" id=22]
+radius = 0.419353
+height = 0.173798
 
 [sub_resource type="AnimationNodeAnimation" id=14]
 animation = "crouch-idle-loop"
@@ -20,43 +32,43 @@ animation = "crouch-idle-loop"
 [sub_resource type="AnimationNodeAnimation" id=15]
 animation = "crouch-walk-loop"
 
-[sub_resource type="AnimationNodeBlendSpace1D" id=5]
+[sub_resource type="AnimationNodeBlendSpace1D" id=30]
 blend_point_0/node = SubResource( 14 )
 blend_point_0/pos = 0.0
 blend_point_1/node = SubResource( 15 )
 blend_point_1/pos = 0.3
 
-[sub_resource type="AnimationNodeAnimation" id=11]
+[sub_resource type="AnimationNodeAnimation" id=41]
 animation = "fall-loop"
 
-[sub_resource type="AnimationNodeAnimation" id=12]
+[sub_resource type="AnimationNodeAnimation" id=42]
 animation = "idle-to-jump"
 
-[sub_resource type="AnimationNodeAnimation" id=13]
+[sub_resource type="AnimationNodeAnimation" id=43]
 animation = "fall-to-land"
 
-[sub_resource type="AnimationNodeBlendSpace1D" id=6]
-blend_point_0/node = SubResource( 11 )
+[sub_resource type="AnimationNodeBlendSpace1D" id=31]
+blend_point_0/node = SubResource( 41 )
 blend_point_0/pos = 0.0
-blend_point_1/node = SubResource( 12 )
+blend_point_1/node = SubResource( 42 )
 blend_point_1/pos = 0.3
-blend_point_2/node = SubResource( 13 )
+blend_point_2/node = SubResource( 43 )
 blend_point_2/pos = -0.3
 
-[sub_resource type="AnimationNodeAnimation" id=9]
+[sub_resource type="AnimationNodeAnimation" id=32]
 animation = "idle-loop"
 
-[sub_resource type="AnimationNodeAnimation" id=10]
+[sub_resource type="AnimationNodeAnimation" id=33]
 animation = "run-loop"
 
-[sub_resource type="AnimationNodeBlendSpace1D" id=7]
-blend_point_0/node = SubResource( 9 )
+[sub_resource type="AnimationNodeBlendSpace1D" id=34]
+blend_point_0/node = SubResource( 32 )
 blend_point_0/pos = 0.0
-blend_point_1/node = SubResource( 10 )
+blend_point_1/node = SubResource( 33 )
 blend_point_1/pos = 0.3
 
-[sub_resource type="AnimationNodeTransition" id=8]
-input_count = 3
+[sub_resource type="AnimationNodeTransition" id=35]
+input_count = 5
 xfade_time = 0.2
 input_0/name = "on-ground"
 input_0/auto_advance = false
@@ -64,18 +76,50 @@ input_1/name = "in-air"
 input_1/auto_advance = false
 input_2/name = "crouching"
 input_2/auto_advance = false
+input_3/name = "swimming"
+input_3/auto_advance = false
+input_4/name = "surging"
+input_4/auto_advance = false
 
-[sub_resource type="AnimationNodeBlendTree" id=4]
-graph_offset = Vector2( -905, -70 )
-nodes/Crouching/node = SubResource( 5 )
+[sub_resource type="AnimationNodeAnimation" id=48]
+animation = "surging-loop"
+
+[sub_resource type="AnimationNodeAnimation" id=49]
+animation = "surging-forward-loop"
+
+[sub_resource type="AnimationNodeBlendSpace1D" id=47]
+blend_point_0/node = SubResource( 48 )
+blend_point_0/pos = 0.0
+blend_point_1/node = SubResource( 49 )
+blend_point_1/pos = 0.3
+
+[sub_resource type="AnimationNodeAnimation" id=45]
+animation = "swimming-idle-loop"
+
+[sub_resource type="AnimationNodeAnimation" id=46]
+animation = "swimming-forward-loop"
+
+[sub_resource type="AnimationNodeBlendSpace1D" id=44]
+blend_point_0/node = SubResource( 45 )
+blend_point_0/pos = 0.0
+blend_point_1/node = SubResource( 46 )
+blend_point_1/pos = 0.4
+
+[sub_resource type="AnimationNodeBlendTree" id=36]
+graph_offset = Vector2( -589, 158 )
+nodes/Crouching/node = SubResource( 30 )
 nodes/Crouching/position = Vector2( -360, 260 )
-nodes/InAir/node = SubResource( 6 )
+nodes/InAir/node = SubResource( 31 )
 nodes/InAir/position = Vector2( -360, 120 )
-nodes/OnGround/node = SubResource( 7 )
+nodes/OnGround/node = SubResource( 34 )
 nodes/OnGround/position = Vector2( -360, -20 )
-nodes/RootState/node = SubResource( 8 )
+nodes/RootState/node = SubResource( 35 )
 nodes/RootState/position = Vector2( -20, 140 )
-node_connections = [ "output", 0, "RootState", "RootState", 0, "OnGround", "RootState", 1, "InAir", "RootState", 2, "Crouching" ]
+nodes/Surging/node = SubResource( 47 )
+nodes/Surging/position = Vector2( -360, 540 )
+nodes/Swimming/node = SubResource( 44 )
+nodes/Swimming/position = Vector2( -360, 400 )
+node_connections = [ "output", 0, "RootState", "RootState", 0, "OnGround", "RootState", 1, "InAir", "RootState", 2, "Crouching", "RootState", 3, "Swimming", "RootState", 4, "Surging" ]
 
 [sub_resource type="SpatialMaterial" id=16]
 flags_transparent = true
@@ -103,26 +147,78 @@ color_ramp = SubResource( 20 )
 [sub_resource type="CubeMesh" id=18]
 size = Vector3( 0.04, 0.04, 2 )
 
-[sub_resource type="CapsuleShape" id=3]
+[sub_resource type="Gradient" id=23]
+offsets = PoolRealArray( 0, 0.365079, 0.555556, 0.767196 )
+colors = PoolColorArray( 0, 0.294118, 1, 1, 0.0235294, 0.505882, 0.992157, 1, 0.498039, 1, 0.941176, 1, 0.498039, 1, 0.941176, 0 )
+
+[sub_resource type="GradientTexture" id=24]
+gradient = SubResource( 23 )
+
+[sub_resource type="Curve" id=25]
+_data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.34434, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.834906, 0 ), -4.81818, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=26]
+curve = SubResource( 25 )
+
+[sub_resource type="ParticlesMaterial" id=27]
+direction = Vector3( 0, 0, 1 )
+spread = 15.0
+flatness = 0.38
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 3.0
+scale_curve = SubResource( 26 )
+color = Color( 1, 1, 1, 0.537255 )
+color_ramp = SubResource( 24 )
+
+[sub_resource type="SpatialMaterial" id=28]
+flags_transparent = true
+flags_unshaded = true
+vertex_color_use_as_albedo = true
+params_blend_mode = 1
+
+[sub_resource type="SphereMesh" id=29]
+material = SubResource( 28 )
+radius = 0.1
+height = 0.2
+
+[sub_resource type="CapsuleShape" id=37]
 radius = 0.3
 height = 1.2
 
 [node name="Player" type="KinematicBody" groups=["player"]]
 script = ExtResource( 1 )
 
+[node name="DeepWaterDetector" type="Area" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape" type="CollisionShape" parent="DeepWaterDetector"]
+shape = SubResource( 21 )
+
+[node name="WaterSurfaceDetector" type="Area" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.15803, 0 )
+collision_layer = 2
+collision_mask = 4
+
+[node name="CollisionShape" type="CollisionShape" parent="WaterSurfaceDetector"]
+shape = SubResource( 22 )
+
 [node name="Skin" type="Spatial" parent="."]
 
 [node name="PlayerDoll" parent="Skin" instance=ExtResource( 13 )]
-transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0 )
+transform = Transform( -1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 0, 0, 0 )
 
 [node name="AnimationTree" type="AnimationTree" parent="Skin"]
-tree_root = SubResource( 4 )
+tree_root = SubResource( 36 )
 anim_player = NodePath("../PlayerDoll/AnimationPlayer")
 active = true
 parameters/Crouching/blend_position = 0
 parameters/InAir/blend_position = 0
-parameters/OnGround/blend_position = 0
+parameters/OnGround/blend_position = 0.0
 parameters/RootState/current = 0
+parameters/Surging/blend_position = 0.0
+parameters/Swimming/blend_position = 0.0
 
 [node name="VfxDash" type="Particles" parent="Skin"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.984, 0.879 )
@@ -137,9 +233,20 @@ visibility_aabb = AABB( -1.39, -2.508, -3.479, 2.781, 5.015, 6.958 )
 process_material = SubResource( 17 )
 draw_pass_1 = SubResource( 18 )
 
+[node name="VfxSurge" type="Particles" parent="Skin"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.01641, 0 )
+emitting = false
+amount = 16
+lifetime = 0.6
+one_shot = true
+randomness = 1.0
+visibility_aabb = AABB( -4, -1.21914, -2.03327, 8, 2.43828, 4.06654 )
+process_material = SubResource( 27 )
+draw_pass_1 = SubResource( 29 )
+
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.9, -4.37114e-09 )
-shape = SubResource( 3 )
+shape = SubResource( 37 )
 
 [node name="CamRoot" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0 )
@@ -190,5 +297,25 @@ script = ExtResource( 7 )
 [node name="Dashing" type="Node" parent="Movement/InAir"]
 script = ExtResource( 8 )
 dash_power = 40.0
+
+[node name="Swimming" type="Node" parent="Movement"]
+script = ExtResource( 14 )
+
+[node name="Diving" type="Node" parent="Movement/Swimming"]
+script = ExtResource( 17 )
+
+[node name="OnSurface" type="Node" parent="Movement/Swimming"]
+script = ExtResource( 15 )
+
+[node name="Underwater" type="Node" parent="Movement/Swimming"]
+script = ExtResource( 16 )
+
+[node name="Surging" type="Node" parent="Movement/Swimming"]
+script = ExtResource( 18 )
+
+[connection signal="area_entered" from="DeepWaterDetector" to="." method="_on_DeepWaterDetector_area_entered"]
+[connection signal="area_exited" from="DeepWaterDetector" to="." method="_on_DeepWaterDetector_area_exited"]
+[connection signal="area_entered" from="WaterSurfaceDetector" to="." method="_on_WaterSurfaceDetector_area_entered"]
+[connection signal="area_exited" from="WaterSurfaceDetector" to="." method="_on_WaterSurfaceDetector_area_exited"]
 
 [editable path="Skin/PlayerDoll"]

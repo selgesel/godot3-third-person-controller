@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/thumb-stick-ring.png-f86f74cd590bb37fd2e257d5abc8b42d.stex"
+path="res://.import/icon-dash.png-a457b31e860170a5e05a2e18f193ec70.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/thumb-stick-ring.png"
-dest_files=[ "res://.import/thumb-stick-ring.png-f86f74cd590bb37fd2e257d5abc8b42d.stex" ]
+source_file="res://assets/icons/icon-dash.png"
+dest_files=[ "res://.import/icon-dash.png-a457b31e860170a5e05a2e18f193ec70.stex" ]
 
 [params]
 
