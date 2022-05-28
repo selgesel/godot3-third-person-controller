@@ -1,5 +1,7 @@
-# Godot Third Person Player Controller
-A third person player controller with touchscreen support for Godot.
+# Godot 3 - Third Person Player Controller
+A third person player controller with touchscreen support for Godot 3.
+
+> **Note:** As the name implies this project is only for Godot 3. I'm working on an updated version for Godot 4 as well as a migration guide, and will link to the corresponding project and the video when they're ready.
 
 This is a complementary code repository for my [YouTube video series](https://www.youtube.com/playlist?list=PLlT0CCZ8Yw0mcxG_D_sSA-Imnc5tiR4tx) and it gets updated with each new video I post.
 
@@ -7,32 +9,50 @@ This means that the master branch always contains the latest changes, and is in 
 
 For a list of changes you might want to see the [CHANGELOG.md](./CHANGELOG.md), and also the [Releases](https://github.com/selgesel/godot-third-person-controller/releases) page for each individual release (e.g. a new tag).
 
-![Preview](./preview2.gif)
+![Preview](./preview3.gif)
 
 ## Desktop Controls
+### Common Actions
 | Keys | Action Name | Description |
 |------|-------------|-------------|
-| `W` | `move_forward` | Move character forward |
-| `S` | `move_backwards` | Move character backwards |
-| `A` | `move_left` | Move character to the left |
-| `D` | `move_right` | Move character to the right |
-| `Q` | `dash` | Have the character dash in their current movement direction (works both on the ground and mid-air) |
-| `Shift` | `sprint` | Have the character run faster |
-| `Ctrl` | `crouch` | Have the character crouch and move more slowly. While crouching the character can't jump or dash. |
-| `Space` | `jump` | Have the character jump |
+| `W` | `move_forward` | Move/swim forward |
+| `S` | `move_backwards` | Move/swim backwards |
+| `A` | `move_left` | Move/swim to the left |
+| `D` | `move_right` | Move/swim to the right |
 | `Esc` | `ui_cancel` | (Built-in) Toggle between captured and visible mouse modes |
 | `Mouse Wheel Up` | `zoom_in` | Move the camera closer to the player |
 | `Mouse Wheel Down` | `zoom_out` | Move the camera further away from the player |
 
-## Touchscreen Gestures
+### When Not Swimming
+| Keys | Action Name | Description |
+|------|-------------|-------------|
+| `Q` | `dash` | (Hold) Dash in the current movement direction. Hold to dash periodically |
+| `Shift` | `sprint` | (Hold) Run faster |
+| `Ctrl` | `crouch` | (Hold) Crouch. While crouching the player moves more slowly and can't jump or dash |
+| `Space` | `jump` | Jump. The player can jump multiple times |
+
+### When Swimming
+When swimming underwater the movement direction is affected both by the horizontal and vertical angles of the camera. The player can only swim horizontally when on the water surface
+
+| Keys | Action Name | Description |
+|------|-------------|-------------|
+| `Q` | `surge` | (Hold to charge) After charging for a brief duration, surge in the current movement direction |
+| `Ctrl` | `swim_down` | (Hold) Swim downwards. When on surface, this forces the player to dive back in |
+| `Space` | `swim_up` | (Hold) Swim upwards |
+| `Space` | `jump` | (When on surface) Jump out of the water |
+
+## Touchscreen Controls
+In touchscreen devices some actions are performed through gestures, and some are performed simply by pressing the corresponding on-screen button.
+
+Each button displays an icon that (hopefully) explains the action that they perform, and they also appear or disappear based on whether or not they're available.
+
+### Gestures
 | Gesture | Context | Description |
 |---------|---------|-------------|
-| Drag | Thumb Stick (Left) | Move the character around with a speed relative to drag distance |
+| Drag | Thumb Stick (Left) | Move/swim in the current look direction with a speed relative to the drag distance |
 | Drag | Screen | Rotate the camera |
-| Press | Button (Right) | Have the character jump |
 | Pinch In (Two Fingers) | Screen | Move the camera further away from the player |
 | Pinch Out (Two Fingers) | Screen | Move the camera closer to the player |
 
 ## License
 MIT
-

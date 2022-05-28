@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.0.6
+- Added swimming functionality
+    - The player can now swim in bodies of water
+    - The player can swim up and down with corresponding action keys/buttons, and when underwater the camera's vertical angle affects the vertical swim direction
+    - When underwater the player can hold the charge the surge action, and when released they'll be propelled forward in the direction they're facing
+- Updated the touchscreen control icons
+- Updated the player model with the newer version which has swimming animations
+- Fixed an issue that allowed the player to jump once more than intended
+- Improved camera positioning to better fit the player in the screen
+- Resized the player's collision shape to better fit the player model
+
 ## 0.0.5
 - Replaced the character "body" with a simple 3D model
 - Added movement animations
