@@ -4,8 +4,6 @@ class_name PlayerState
 
 onready var player: Player = get_tree().get_nodes_in_group("player")[0]
 
-var _move_rot: float = 0
-
 func set_horizontal_movement(speed, turn_speed, cam_follow_speed, acceleration, delta):
     # get the movement direction directly from the controls node and turn it into a Vector3
     var move_dir = player.controls.get_movement_vector()
@@ -13,8 +11,8 @@ func set_horizontal_movement(speed, turn_speed, cam_follow_speed, acceleration, 
 
     # make the player move towards where the camera is facing by lerping the current movement rotation
     # towards the camera's horizontal rotation and rotating the raw movement direction with that angle
-    _move_rot = lerp(_move_rot, deg2rad(player.camera._rot_h), cam_follow_speed * delta)
-    direction = direction.rotated(Vector3.UP, _move_rot)
+    player.move_rot = lerp(player.move_rot, deg2rad(player.camera._rot_h), cam_follow_speed * delta)
+    direction = direction.rotated(Vector3.UP, player.move_rot)
 
     # lerp the player's current horizontal velocity towards the horizontal velocity as determined by
     # the input direction and the given horizontal speed

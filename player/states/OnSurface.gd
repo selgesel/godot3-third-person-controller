@@ -6,9 +6,6 @@ export(float) var acceleration: float = 10
 export(float) var cam_follow_speed: float = 4
 export(float) var jump_power: float = 30
 export(float) var dive_back_speed: float = -15
-export(float) var swim_out_duration_threshold: float = .5
-
-var _swim_out_duration: float = 0
 
 func physics_process(delta):
     # update the parent state

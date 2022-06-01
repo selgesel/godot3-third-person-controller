@@ -106,7 +106,7 @@ blend_point_1/node = SubResource( 46 )
 blend_point_1/pos = 0.4
 
 [sub_resource type="AnimationNodeBlendTree" id=36]
-graph_offset = Vector2( -589, 158 )
+graph_offset = Vector2( -760, -31.29 )
 nodes/Crouching/node = SubResource( 30 )
 nodes/Crouching/position = Vector2( -360, 260 )
 nodes/InAir/node = SubResource( 31 )
@@ -240,7 +240,7 @@ amount = 16
 lifetime = 0.6
 one_shot = true
 randomness = 1.0
-visibility_aabb = AABB( -4, -1.21914, -2.03327, 8, 2.43828, 4.06654 )
+visibility_aabb = AABB( -2, -1.21914, -3, 4, 2.43828, 6 )
 process_material = SubResource( 27 )
 draw_pass_1 = SubResource( 29 )
 

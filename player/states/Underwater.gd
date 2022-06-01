@@ -9,7 +9,6 @@ export(float) var surge_charge_duration: float = .5
 
 var _surge_cooldown_remaining: float = 0
 var _surge_charge_duration: float = 0
-var _y_rot: float = 0
 
 func process(delta):
     # count towards the surge cooldown timer
@@ -81,4 +80,4 @@ func physics_process(delta):
     player.skin.rotation.x = lerp_angle(player.skin.rotation.x, vertical_angle, cam_follow_speed * delta)
 
     # and lerp the player's y velocity to the swim speed multiplied by the vertical swim factor
-    player.y_velocity = lerp(player.y_velocity, vertical_swim_factor * swim_speed, acceleration * delta)
+    player.y_velocity = lerp(player.y_velocity, vertical_swim_factor * speed, acceleration * delta)

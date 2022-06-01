@@ -19,6 +19,7 @@ onready var water_surface_detector: Area = $WaterSurfaceDetector
 var velocity: Vector3 = Vector3.ZERO
 var y_velocity: float = 0
 var head_above_water: bool = true
+var move_rot: float = 0
 
 var _real_velocity: Vector3 = Vector3.ZERO
 

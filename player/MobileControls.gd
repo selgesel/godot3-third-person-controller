@@ -87,7 +87,7 @@ func _input(event):
             _cam_rot.y -= event.relative.y * _parent.sensitivity
             _cam_rot.y = clamp(_cam_rot.y, _parent.min_pitch, _parent.max_pitch)
 
-func _on_player_movement_state_changed(new_state: NodePath):
+func _on_player_movement_state_changed(new_state):
     # show or hide the default and swimming buttons based on the player's new movement state
     var state_name := "%s" % [new_state]
     var is_swimming = state_name.begins_with("Swimming")

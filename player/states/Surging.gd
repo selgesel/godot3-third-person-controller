@@ -33,7 +33,6 @@ func physics_process(delta):
 
     # get the player's current move direction and combine it with vertical the look angle to determine
     # the effective movement direction in 3D space
-    var move_dir = player.controls.get_movement_vector()
     var direction = Vector3.FORWARD.rotated(Vector3.UP, player.skin.rotation.y)
     
     direction.y = sin(deg2rad(player.camera._rot_v))
