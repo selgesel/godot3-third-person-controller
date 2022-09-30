@@ -3,6 +3,9 @@ extends PlayerState
 export(float) var stop_speed: float = 6
 export(float) var velocity_threshold: float = 0.5
 
+func process(delta):
+    pass
+
 func physics_process(delta):
     # update the parent state
     .physics_process(delta)

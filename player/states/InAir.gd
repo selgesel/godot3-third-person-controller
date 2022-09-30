@@ -33,9 +33,6 @@ func process(delta):
         # set the dash cooldown timer to the cooldown duration
         state_machine.transition_to("InAir/Dashing")
         _dash_cooldown_remaining = dash_cooldown
-    else:
-        # otherwise the player is most likely falling, so transition to the InAir/Falling state
-        state_machine.transition_to("InAir/Falling")
 
 func physics_process(delta):
     # set the in air blend position to player's vertical velocity divided by 50, the max. terminal velocity

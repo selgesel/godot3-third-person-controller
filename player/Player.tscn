@@ -23,8 +23,8 @@
 radius = 0.5
 
 [sub_resource type="CylinderShape" id=22]
-radius = 0.419353
 height = 0.173798
+radius = 0.419353
 
 [sub_resource type="AnimationNodeAnimation" id=14]
 animation = "crouch-idle-loop"
